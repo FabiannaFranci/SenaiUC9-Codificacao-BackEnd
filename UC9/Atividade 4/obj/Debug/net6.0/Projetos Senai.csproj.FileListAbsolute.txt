@@ -1,0 +1,15 @@
+C:\Users\Fabio\Documents\Projetos Senai\bin\Debug\net6.0\Projetos Senai.exe
+C:\Users\Fabio\Documents\Projetos Senai\bin\Debug\net6.0\Projetos Senai.deps.json
+C:\Users\Fabio\Documents\Projetos Senai\bin\Debug\net6.0\Projetos Senai.runtimeconfig.json
+C:\Users\Fabio\Documents\Projetos Senai\bin\Debug\net6.0\Projetos Senai.dll
+C:\Users\Fabio\Documents\Projetos Senai\bin\Debug\net6.0\Projetos Senai.pdb
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.csproj.AssemblyReference.cache
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.AssemblyInfoInputs.cache
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.AssemblyInfo.cs
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.csproj.CoreCompileInputs.cache
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.dll
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\refint\Projetos Senai.dll
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.pdb
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\Projetos Senai.genruntimeconfig.cache
+C:\Users\Fabio\Documents\Projetos Senai\obj\Debug\net6.0\ref\Projetos Senai.dll
