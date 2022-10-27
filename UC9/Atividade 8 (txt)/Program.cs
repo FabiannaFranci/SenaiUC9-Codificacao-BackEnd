@@ -173,11 +173,6 @@ Escolha uma opção abaixo
                 //     }
                 //     Console.WriteLine("Aperte ENTER para continuar");
                 //     Console.ReadLine();
-                    
-                
-                } 
-                else{
-                    Console.WriteLine("Lista Vazia");
                 // } 
                 // else{
                 //     Console.WriteLine("Lista Vazia");
