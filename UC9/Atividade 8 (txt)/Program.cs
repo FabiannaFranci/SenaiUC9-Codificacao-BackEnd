@@ -128,8 +128,7 @@ Escolha uma opção abaixo
                     
                 } while (verificarSeEnderecoEComercialPF  != "s" && verificarSeEnderecoEComercialPF != "n");
 
-                novaPF.Endereco = novoEndPF;
-                listaPF.Add(novaPF);
+               
                 using(StreamWriter pfTxt = new StreamWriter($"{novaPF.Nome}.txt"))
                 {
                     pfTxt.WriteLine(@$"
@@ -147,42 +146,7 @@ Escolha uma opção abaixo
             break;
 
                 case "2":
-                if(listaPF.Count > 0){
-                    foreach(PessoaFisica pf in listaPF){
-                    Console.WriteLine(@$"
-                    Nome: {pf.Nome}
-                    CPF: {pf.cpf}
-                    Data de Nascimento: {pf.DataDeNascimento}
-                    Rendimento: {pf.Rendimento}
-                    Imposto à pagar: {metodosPF.PagarImposto(pf.Rendimento).ToString("C", new CultureInfo("pt-BR"))}
-                    Endereço Comercial?: {(pf.Endereco!.EnderecoComercial? "Sim" : "Não")}
-                    ");
-                    }
-                    Console.WriteLine("Aperte ENTER para continuar");
-                    Console.ReadLine();
-                // if(listaPF.Count > 0){
-                //     foreach(PessoaFisica pf in listaPF){
-                //     Console.WriteLine(@$"
-                //     Nome: {pf.Nome}
-                //     CPF: {pf.cpf}
-                //     Data de Nascimento: {pf.DataDeNascimento}
-                //     Rendimento: {pf.Rendimento}
-                //     Imposto à pagar: {metodosPF.PagarImposto(pf.Rendimento).ToString("C", new CultureInfo("pt-BR"))}
-                //     Endereço Comercial?: {(pf.Endereco!.EnderecoComercial? "Sim" : "Não")}
-                //     ");
-                //     }
-                //     Console.WriteLine("Aperte ENTER para continuar");
-                //     Console.ReadLine();
-                    
-                
-                } 
-                else{
-                    Console.WriteLine("Lista Vazia");
-                // } 
-                // else{
-                //     Console.WriteLine("Lista Vazia");
-                // }
-                          
+        
                 using(StreamReader pftxtSR = new StreamReader("fabi.txt"))
                 {
                     string? linha;
@@ -191,7 +155,7 @@ Escolha uma opção abaixo
                     }
                 }
                 
-
+                Console.WriteLine("Aperte ENTER para continuar");
                 Console.ReadLine();
                           
                           
