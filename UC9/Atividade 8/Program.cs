@@ -10,7 +10,6 @@ bool cpfValido;
 bool cnpjValido;
 string? verificarSeEnderecoEComercialPF;
 string? verificarSeEnderecoEComercialPJ;
-List<PessoaJuridica> listaPJ = new List<PessoaJuridica>();
 
 Console.WriteLine(@$"
 ===========================================
@@ -20,7 +19,7 @@ Console.WriteLine(@$"
 ");
 Console.ResetColor();
 Util.MetodosUteis("Sistema Inicializando", 500, 5);
-//Console.Clear();
+Console.Clear();
 
 
 do
@@ -58,104 +57,106 @@ Escolha uma opção abaixo
 ");
         opcaoMenuPF = Console.ReadLine();
 
-            switch(opcaoMenuPF){
+            switch(opcaoMenuPF)
+            {
                 case "1":
-                Endereco novoEndPF = new Endereco();
-                Console.Write("Digite seu nome: ");
-                novaPF.Nome = Console.ReadLine();
-                Console.Write("Digite seu CPF: ");
-                do
-                {
-                    string? cpfQuestion = Console.ReadLine();
-                    cpfValido = novaPF.ValidarCpf(cpfQuestion!);
-                    if(cpfValido){
-                        novaPF.cpf = cpfQuestion;
-                    }
-                    else{
-                        Console.WriteLine("CPF inválido, tente novamente.");
-                    }
-
-
-                } while (cpfValido == false);
-
-                Console.Write("Data de Nascimento DD/MM/AAAA: ");
-
-
-                do
-                {
-                    string? dataNasc = Console.ReadLine();
-                    dataValida = novaPF.ValidarDataNasc(dataNasc!);
-                    if(dataValida){
-                        novaPF.DataDeNascimento = Convert.ToDateTime(dataNasc);
-
-
-                    }
-                    else{
-                        Console.WriteLine("Data inválida, escreva outra");
-                    }
-
-                } while (dataValida == false);
-
-                Console.Write("Digite seu rendimento mensal: R$");
-                novaPF.Rendimento = float.Parse(Console.ReadLine()!);
-                
-
-                Console.Write("Digite seu endereço: ");
-                novoEndPF.Logradouro = Console.ReadLine();
-
-                Console.Write("Nº: ");
-                novoEndPF.Numero = Console.ReadLine();
-
-                Console.Write("Complemento: ");
-                novoEndPF.Complemento = Console.ReadLine();
-
-                do
-                { 
-                    Console.Write("Comercial? [S/N]: ");
-                    verificarSeEnderecoEComercialPF = Console.ReadLine()!.ToLower();
-                    if(verificarSeEnderecoEComercialPF  == "s")
+                    Endereco novoEndPF = new Endereco();
+                    Console.Write("Digite seu nome: ");
+                    novaPF.Nome = Console.ReadLine();
+                    Console.Write("Digite seu CPF: ");
+                    do
                     {
-                        novoEndPF.EnderecoComercial = true;
-                    }
-                    else if(verificarSeEnderecoEComercialPF  == "n")
+                        string? cpfQuestion = Console.ReadLine();
+                        cpfValido = novaPF.ValidarCpf(cpfQuestion!);
+                        if(cpfValido){
+                            novaPF.cpf = cpfQuestion;
+                        }
+                        else{
+                            Console.WriteLine("CPF inválido, tente novamente.");
+                        }
+
+
+                    } while (cpfValido == false);
+
+                    Console.Write("Data de Nascimento DD/MM/AAAA: ");
+
+
+                    do
                     {
-                        novoEndPF.EnderecoComercial = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Inválido, tente novamente.");
-                    }
+                        string? dataNasc = Console.ReadLine();
+                        dataValida = novaPF.ValidarDataNasc(dataNasc!);
+                        if(dataValida){
+                            novaPF.DataDeNascimento = Convert.ToDateTime(dataNasc);
+
+
+                        }
+                        else{
+                            Console.WriteLine("Data inválida, escreva outra");
+                        }
+
+                    } while (dataValida == false);
+
+                    Console.Write("Digite seu rendimento mensal: R$");
+                    novaPF.Rendimento = float.Parse(Console.ReadLine()!);
                     
-                } while (verificarSeEnderecoEComercialPF  != "s" && verificarSeEnderecoEComercialPF != "n");
 
-                novaPF.Endereco = novoEndPF;
-                metodosPF.InserirDadosPessoaFisica(novaPF);
-                
-            break;
+                    Console.Write("Digite seu endereço: ");
+                    novoEndPF.Logradouro = Console.ReadLine();
+
+                    Console.Write("Nº: ");
+                    novoEndPF.Numero = Console.ReadLine();
+
+                    Console.Write("Complemento: ");
+                    novoEndPF.Complemento = Console.ReadLine();
+
+                    do
+                    { 
+                        Console.Write("Comercial? [S/N]: ");
+                        verificarSeEnderecoEComercialPF = Console.ReadLine()!.ToLower();
+                        if(verificarSeEnderecoEComercialPF  == "s")
+                        {
+                            novoEndPF.EnderecoComercial = true;
+                        }
+                        else if(verificarSeEnderecoEComercialPF  == "n")
+                        {
+                            novoEndPF.EnderecoComercial = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Inválido, tente novamente.");
+                        }
+                        
+                    } while (verificarSeEnderecoEComercialPF  != "s" && verificarSeEnderecoEComercialPF != "n");
+
+                    novaPF.Endereco = novoEndPF;
+                    metodosPF.InserirDadosPessoaFisica(novaPF);
+                    
+                    break;
 
                 case "2":
                 
 
-                List<PessoaFisica> listaPessoaFisica = metodosPF.LerArquivoPessoaFisica();
+                    List<PessoaFisica> listaPessoaFisica = metodosPF.LerArquivoPessoaFisica();
 
-                foreach(PessoaFisica cadaItem in listaPessoaFisica)
-                {
-                    Console.WriteLine(@$"
-                Nome: {cadaItem.Nome}
-                Data de Nascimento: {cadaItem.DataDeNascimento}
-                Rendimento Mensal: {cadaItem.Rendimento}
-                Cpf: {cadaItem.cpf}");
-                //Endereço: {cadaItem.Endereco.Logradouro} nº{cadaItem.Endereco.Numero}");
-                // Complemento: {cadaItem.Endereco!.Complemento}
-                // Comercial? {cadaItem.Endereco!.EnderecoComercial}
-                // Imposto à ser pago: {cadaItem.PagarImposto(cadaItem.Rendimento).ToString("C", new CultureInfo("pt-BR"))}");
-                Console.WriteLine("Aperte ENTER para continuar");
-                Console.ReadLine();
-                }
-                         
+                    foreach(PessoaFisica cadaItem in listaPessoaFisica)
+                    {
+
+                        Console.WriteLine(@$"
+                        Nome: {cadaItem.Nome}
+                        Data de Nascimento: {cadaItem.DataDeNascimento}
+                        Rendimento Mensal: {cadaItem.Rendimento}
+                        Cpf: {cadaItem.cpf}
+                        Endereço: {cadaItem.Endereco!.Logradouro} nº{cadaItem.Endereco.Numero}
+                        Complemento: {cadaItem.Endereco!.Complemento}
+                        Comercial? {cadaItem.Endereco!.EnderecoComercial}
+                        Imposto à ser pago: {cadaItem.PagarImposto(cadaItem.Rendimento).ToString("C", new CultureInfo("pt-BR"))}");
+                        Console.WriteLine("Aperte ENTER para continuar");
+                        Console.ReadLine();
+                    }
+                            
                 break;
 
-                }
+            }
         }while (opcaoMenuPF != "0"); 
         break;
     
@@ -237,11 +238,16 @@ Escolha uma opção abaixo
 
 
             List<PessoaJuridica> listaPessoaJuridica = metodosPJ.LerArquivoPessoaJuridica();
-                foreach(PessoaJuridica cadaItem in listaPessoaJuridica){
+                foreach(PessoaJuridica cadaItem in listaPessoaJuridica)
+                {
                     System.Console.WriteLine(@$"
                     Nome: {cadaItem.Nome}
                     CNPJ: {cadaItem.Cpnj}
-                    Rendimento: {cadaItem.Rendimento} ");
+                    Rendimento: {cadaItem.Rendimento} 
+                    Endereço: {cadaItem.Endereco!.Logradouro} nº{cadaItem.Endereco.Numero}
+                    Complemento: {cadaItem.Endereco!.Complemento}
+                    Comercial? {cadaItem.Endereco!.EnderecoComercial}
+                    Imposto à ser pago: {cadaItem.PagarImposto(cadaItem.Rendimento).ToString("C", new CultureInfo("pt-BR"))}");
                     System.Console.WriteLine("Aperte ENTER para continuar.");
                     Console.ReadLine();
                     

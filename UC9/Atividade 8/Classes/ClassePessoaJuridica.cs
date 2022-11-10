@@ -51,28 +51,40 @@ namespace Projetos_Senai.Classes
             
             return false;
         }
-            public void InserirDadosPessoaJuridica(PessoaJuridica pf)
+            public void InserirDadosPessoaJuridica(PessoaJuridica novaPF)
             {
                 Util.VerificaçãoFileDirectory(CaminhoPesooaJuridica!);
 
-                string[] cvsPessoaJuridica = {$"{pf.Nome}, {pf.Cpnj}, {pf.Rendimento} "};
+                string[] cvsPessoaJuridica = {$"{novaPF.Nome}, {novaPF.Cpnj}, {novaPF.Rendimento},{novaPF.Endereco!.Logradouro}, {novaPF.Endereco!.Numero}, {novaPF.Endereco!.Complemento}, {novaPF.Endereco!.EnderecoComercial}"};
                 
                 File.AppendAllLines(CaminhoPesooaJuridica!, cvsPessoaJuridica);
             }
-            public List<PessoaJuridica> LerArquivoPessoaJuridica(){
-
+            public List<PessoaJuridica> LerArquivoPessoaJuridica()
+            {
                 List<PessoaJuridica> listaPessoaJuridica = new List<PessoaJuridica>();
+
+                Endereco novoEndPJ = new Endereco();
 
                 string[] linha = File.ReadAllLines(CaminhoPesooaJuridica!);
                 
-                foreach(string cadaLinha in linha){
+                foreach(string cadaLinha in linha)
+                {
                     string[] lerAtributo = cadaLinha.Split(",");
+
                     PessoaJuridica cadaAtributo = new PessoaJuridica();
+                    Endereco cadaEndereco = new Endereco();
                     cadaAtributo.Nome = lerAtributo[0];
                     cadaAtributo.Cpnj = lerAtributo[1];
                     cadaAtributo.Rendimento = float.Parse(lerAtributo[2]);
+                    cadaEndereco.Logradouro = lerAtributo[3];
+                    cadaEndereco.Numero = lerAtributo[4];
+                    cadaEndereco.Complemento = lerAtributo[5];
+                    cadaEndereco.EnderecoComercial = Convert.ToBoolean(lerAtributo[6]);
 
-                listaPessoaJuridica.Add(cadaAtributo);
+                    cadaAtributo.Endereco = cadaEndereco;
+
+                    listaPessoaJuridica.Add(cadaAtributo);
+
             }
             return listaPessoaJuridica;
             }
