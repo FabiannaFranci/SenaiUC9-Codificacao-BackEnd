@@ -8,7 +8,5 @@ namespace Projetos_Senai.Interface
     public interface IPessoa
     {   ///Método para pagar imposto, paramêtro float rendimento
         float PagarImposto (float Rendimento);
-
-        
     }
 }
